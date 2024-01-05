@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "973610600832",
+    "project_id": "programa-para-ansiedad-c841a",
+    "storage_bucket": "programa-para-ansiedad-c841a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973610600832:android:30c7d8d4a2a2e2e9dd1965",
+        "android_client_info": {
+          "package_name": "com.scc.adiosansiedad.program"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDINMzzxJ7pjUqG0kzwhaR3JKG4RpNOWag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
