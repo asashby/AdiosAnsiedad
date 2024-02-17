@@ -63,6 +63,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: '973610600832',
     projectId: 'programa-para-ansiedad-c841a',
     storageBucket: 'programa-para-ansiedad-c841a.appspot.com',
-    iosBundleId: 'com.scc.adiosansiedad.program',
+    iosBundleId: 'com.scc.adiosansiedad.app',
   );
 }

@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.scc.adiosansiedad.program</string>
+	<string>com.scc.adiosansiedad.app</string>
 	<key>PROJECT_ID</key>
 	<string>programa-para-ansiedad-c841a</string>
 	<key>STORAGE_BUCKET</key>
