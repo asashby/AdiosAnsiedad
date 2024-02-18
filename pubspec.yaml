@@ -51,8 +51,8 @@ dependencies:
   in_app_purchase: ^3.1.11
   flutter_launcher_icons: "^0.13.1"
 
-flutter_icons:
-  image_path: "assets/Icons/logo.png"
+flutter_launcher_icons:
+  image_path: "icon/logo.png"
   android: true
   ios: true
 
