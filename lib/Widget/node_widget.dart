@@ -40,9 +40,7 @@ class NodeWidget extends StatelessWidget {
   Widget get getStatusWidget{
     switch(percent){
       case -1:
-        return SvgPicture.asset(astIcLockSvg,width: 19,height: 19);
-      case 100:
-        return SvgPicture.asset(astIcCompleteSvg,width: 19,height: 19);
+        return Text("0%",style: const TextStyle(fontSize: 12,color: Colors.white,fontWeight: FontWeight.w600),);
       default:
         return Text("${percent.toInt()}%",style: const TextStyle(fontSize: 12,color: Colors.white,fontWeight: FontWeight.w600),);
     }

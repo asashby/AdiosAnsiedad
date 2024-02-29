@@ -112,38 +112,6 @@ class _DayInfoScreenState extends State<DayInfoScreen> {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: (dayController.getDayInfoByDayId(widget.day?.number??1).contents??[]).length,
                   ),
-                  const SizedBox(height: 20,),
-                  ListView.separated(
-                    separatorBuilder: (_,i){
-                      return const SizedBox(height: 15,);
-                    },
-                    itemBuilder: (context,index){
-                      Day day = dayController.getPreviousDayByDayId(widget.day?.number??1)[index];
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("${AppLocalizations.of(context)?.day} ${day.number}",style: CustomTextStyle.gold18_600,),
-                          const SizedBox(height: 5,),
-                          InkWell(
-                            onTap: (){
-                              Navigator.push(
-                                context,
-                                CupertinoPageRoute(builder: (context) => DayInfoScreen(
-                                  day: day,
-                                  dayIndex: (day.number??0)-1,
-                                )),
-                              );
-                            },
-                            child: Text("${day.title}",style: CustomTextStyle.primary15_500.copyWith(),),
-                          )
-                        ],
-                      );
-                    },
-                    shrinkWrap: true,
-                    padding: EdgeInsets.zero,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: dayController.getPreviousDayByDayId(widget.day?.number??1).length,
-                  ),
                 ],
               )),
             ),

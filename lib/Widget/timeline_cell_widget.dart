@@ -114,19 +114,7 @@ class _TimeLineCellWidgetState extends State<TimeLineCellWidget> {
                 child: InkWell(
                   borderRadius: BorderRadius.circular(15),
                   onTap: (){
-                    if(widget.day!.isIdealProgram){
-                      Navigator.push(
-                        context,
-                        CupertinoPageRoute(builder: (context) => const IdealProgramScreen()),
-                      ).then((value)async{
-                        if(widget.onRefresh != null){
-                          widget.onRefresh!(true);
-                        }
-                        // await Future.delayed(const Duration(seconds: 0),(){ dayController.daysList.refresh();});
-                        // setState(() {});
-                      });
-                    }else if(widget.day!.percent != -1){
-                    // }else{
+                    
                       Navigator.push(
                         context,
                         CupertinoPageRoute(builder: (context) => DayInfoScreen(
@@ -138,7 +126,7 @@ class _TimeLineCellWidgetState extends State<TimeLineCellWidget> {
                           widget.onRefresh!(true);
                         }
                       });
-                    }
+              
                   },
                   child: Container(
                     height: 115,
