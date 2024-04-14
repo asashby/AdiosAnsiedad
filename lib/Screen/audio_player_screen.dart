@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -21,10 +22,10 @@ import '../Utils/custom_text_style.dart';
 class AudioPlayerScreen extends StatefulWidget {
   final int dayIndex;
   final int contentIndex;
-  final Content? content;
+  Content? content;
   final bool isIdealProgram;
 
-  const AudioPlayerScreen({
+  AudioPlayerScreen({
     super.key,
     this.content,
     this.dayIndex = 0,
@@ -57,6 +58,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
           break;
         case PlayerState.completed:
           player.pause();
+          Navigator.pop(context);
           break;
         case PlayerState.paused:
           setState(() {
@@ -76,6 +78,17 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
     streams.add(player.onPositionChanged.listen((event) {
       if(event.inSeconds == totalDuration.inSeconds){
         player.pause();
+        Navigator.pop(context);
+        /*if(widget.content!.number == 1) {
+          widget.content = dayController.getDayInfoByDayId(widget.dayIndex).contents![1];
+          playDuration = Duration(seconds: 0);
+          player.seek(playDuration);
+        }else {
+          Navigator.pop(context);
+        }
+        if(widget.content!.number == 2) {
+          Navigator.pop(context);
+        }*/
       }
       setState(() {
         playDuration = event;
@@ -313,6 +326,38 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
                 Image.asset(astIcHighSoundPng),
               ],
             ),
+            /*Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Visibility(
+                  visible: widget.contentIndex == 0,
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      backgroundColor: PrimaryTheme.primaryColor,
+                      foregroundColor: Colors.white,
+                      minimumSize: Size(88, 36),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(2.0)),
+                      ),
+                    ),
+                    child: Text("SIGUIENTE AUDIO"),
+                    onPressed: (){
+                      Content content = dayController.getDayInfoByDayId(widget.dayIndex + 1).contents![1];
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(builder: (context) => AudioPlayerScreen(
+                          content: content,
+                          contentIndex: widget.contentIndex + 1,
+                          dayIndex: widget.dayIndex,
+                          isIdealProgram: widget.isIdealProgram,
+                        )),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),*/
             const Spacer(),
           ],
         ),

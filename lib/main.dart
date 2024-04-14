@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:quantum/Const/primary_theme.dart';
 import 'package:quantum/Controller/day_controller.dart';
+import 'package:quantum/Model/day_info_model.dart';
 import 'package:quantum/Screen/audio_player_screen.dart';
 import 'package:quantum/Screen/day_info_screen.dart';
 import 'package:quantum/Screen/home_screen.dart';
@@ -67,7 +68,7 @@ class MyApp extends StatelessWidget{
         AppRoute.dayInfo : (context) => const DayInfoScreen(),
         AppRoute.idealProgram : (context) => const IdealProgramScreen(),
         AppRoute.idealProgramInfo : (context) => const IdealProgramInfoScreen(),
-        AppRoute.audioPlayer : (context) => const AudioPlayerScreen(),
+        AppRoute.audioPlayer : (context) => AudioPlayerScreen(),
         AppRoute.inAppPurchaseScreen : (context) => const InAppPurchaseScreen(),
         AppRoute.videoPlayer : (context) => const VideoPlayerScreen(),
       },

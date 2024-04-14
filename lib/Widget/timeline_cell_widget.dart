@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:quantum/Const/route_const.dart';
 import 'package:quantum/Controller/day_controller.dart';
 import 'package:quantum/Screen/day_info_screen.dart';
+import 'package:quantum/Screen/day_nine_info_screen.dart';
 import 'package:quantum/Screen/ideal_program_screen.dart';
 import 'package:quantum/Service/shared_pref_services.dart';
 import 'package:quantum/Utils/custom_text_style.dart';
@@ -114,18 +115,31 @@ class _TimeLineCellWidgetState extends State<TimeLineCellWidget> {
                 child: InkWell(
                   borderRadius: BorderRadius.circular(15),
                   onTap: (){
-                    
-                      Navigator.push(
-                        context,
-                        CupertinoPageRoute(builder: (context) => DayInfoScreen(
-                          day: widget.day,
-                          dayIndex: widget.dayIndex,
-                        )),
-                      ).then((value)async{
-                        if(widget.onRefresh != null){
-                          widget.onRefresh!(true);
-                        }
-                      });
+                      if(widget.dayIndex == 8){
+                        Navigator.push(
+                          context,
+                          CupertinoPageRoute(builder: (context) => DayNineInfoScreen(
+                            day: widget.day,
+                            dayIndex: widget.dayIndex,
+                          )),
+                        ).then((value)async{
+                          if(widget.onRefresh != null){
+                            widget.onRefresh!(true);
+                          }
+                        });
+                      }else{
+                        Navigator.push(
+                          context,
+                          CupertinoPageRoute(builder: (context) => DayInfoScreen(
+                            day: widget.day,
+                            dayIndex: widget.dayIndex,
+                          )),
+                        ).then((value)async{
+                          if(widget.onRefresh != null){
+                            widget.onRefresh!(true);
+                          }
+                        });
+                      }
               
                   },
                   child: Container(
@@ -174,7 +188,10 @@ class _TimeLineCellWidgetState extends State<TimeLineCellWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Text(widget.day?.title??"",style: CustomTextStyle.primary13_500,),
+                                Text(
+                                  widget.dayIndex == 8 ? "CONTINÚA TU TRANSFORMACIÓN" : widget.day!.title!,
+                                  style: CustomTextStyle.primary13_500,
+                                ),
                                 const SizedBox(height: 5,),
                                 Expanded(child: Text(
                                     widget.day?.description??"",

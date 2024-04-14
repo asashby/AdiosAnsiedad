@@ -157,3 +157,51 @@ class IdealProgram {
     "content": content == null ? [] : List<dynamic>.from(content!.map((x) => x.toJson())),
   };
 }
+
+class NinthDayContent {
+  String? title;
+  int? id;
+  List<NinthDayContentItem>? items;
+
+  NinthDayContent({
+    this.title,
+    this.id,
+    this.items,
+  });
+
+  factory NinthDayContent.fromJson(Map<String, dynamic> json) => NinthDayContent(
+    title: json["title"],
+    id: json["id"],
+    items: json["items"] == null ? [] : List<NinthDayContentItem>.from(json["items"]!.map((x) => NinthDayContentItem.fromJson(x))),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "title": title,
+    "id": id,
+    "items": items == null ? [] : List<dynamic>.from(items!.map((x) => x.toJson())),
+  };
+}
+
+class NinthDayContentItem {
+  String? description;
+  int? id;
+  Content? content;
+
+  NinthDayContentItem({
+    this.description,
+    this.id,
+    this.content,
+  });
+
+  factory NinthDayContentItem.fromJson(Map<String, dynamic> json) => NinthDayContentItem(
+    description: json["description"],
+    id: json["id"],
+    content: json["content"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "description": description,
+    "id": id,
+    "content": content,
+  };
+}

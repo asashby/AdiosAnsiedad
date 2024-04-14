@@ -10,16 +10,16 @@ import 'dart:developer';
 import '../Const/const_string.dart';
 import '../Utils/custom_text_style.dart';
 
-class PlayContentWidget extends StatefulWidget {
+class NinthDayItemContentWidget extends StatefulWidget {
   final int dayIndex;
   final int contentIndex;
-  final Content? content;
+  final NinthDayContentItem? contentItem;
   final bool isIdealProgram;
   final Function()? onTap;
 
-  const PlayContentWidget({
+  const NinthDayItemContentWidget({
     super.key,
-    this.content,
+    this.contentItem,
     this.onTap,
     this.dayIndex = 0,
     this.contentIndex = 0,
@@ -27,10 +27,10 @@ class PlayContentWidget extends StatefulWidget {
   });
 
   @override
-  State<PlayContentWidget> createState() => _PlayContentWidgetState();
+  State<NinthDayItemContentWidget> createState() => _NinthDayItemContentWidgetState();
 }
 
-class _PlayContentWidgetState extends State<PlayContentWidget> {
+class _NinthDayItemContentWidgetState extends State<NinthDayItemContentWidget> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -40,28 +40,25 @@ class _PlayContentWidgetState extends State<PlayContentWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Visibility(
-                visible: (widget.content?.timeDes??"").isNotEmpty ,
-                child: Column(
-                  children: [
-                    Text("${widget.content?.timeDes}",style: CustomTextStyle.gold18_600.copyWith(fontWeight: FontWeight.w500),),
-                    const SizedBox(height: 5,),
-                  ],
-                ),
+              Text(
+                "${widget.contentItem!.description}",
+                style: CustomTextStyle.gold18_600.copyWith(fontWeight: FontWeight.w500),
               ),
-              Text("${widget.content?.title}",style: CustomTextStyle.primary14_600,),
+              const SizedBox(height: 5,),
+              Text(
+                widget.contentItem!.content!.title,style: CustomTextStyle.primary14_600,
+              ),
             ],
           ),
         ),
         const SizedBox(width: 10,),
         InkWell(
           onTap: (){
-            if(widget.content == null)return;
-            if(widget.content!.contentType == 1){
+            if(widget.contentItem!.content!.contentType == 1){
               Navigator.push(
                 context,
                 CupertinoPageRoute(builder: (context) => AudioPlayerScreen(
-                  content: widget.content,
+                  content: widget.contentItem!.content!,
                   contentIndex: widget.contentIndex,
                   dayIndex: widget.dayIndex,
                   isIdealProgram: widget.isIdealProgram,
@@ -71,7 +68,7 @@ class _PlayContentWidgetState extends State<PlayContentWidget> {
               Navigator.push(
                 context,
                 CupertinoPageRoute(builder: (context) => VideoPlayerScreen(
-                  content: widget.content,
+                  content: widget.contentItem!.content!,
                   contentIndex: widget.contentIndex,
                   dayIndex: widget.dayIndex,
                   isIdealProgram: widget.isIdealProgram,

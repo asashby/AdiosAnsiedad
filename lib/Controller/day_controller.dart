@@ -17,6 +17,7 @@ class DayController extends GetxController{
   final daysList = <Day>[].obs;
   final daysInfoList = <DayInfo>[].obs;
   final idealProgramList = <IdealProgram>[].obs;
+  final dayNineContentList = <NinthDayContent>[].obs;
 
   Map<String,Content> contentData  = {};
   // Map<String,Content> contentData  = {
@@ -252,6 +253,92 @@ class DayController extends GetxController{
       ),
     ];
 
+    dayNineContentList.value = [
+      NinthDayContent(
+        title: "NIVEL DE ANSIEDAD BAJO",
+        id: 0,
+        items: [
+          NinthDayContentItem(
+            description: "POR LA MAÑANA",
+            id: 0,
+            content: contentData["A6"]!.copyWith(),
+          ),
+          NinthDayContentItem(
+            description: "POR LA TARDE",
+            id: 1,
+            content: contentData["V4"]!.copyWith(),
+          ),
+          NinthDayContentItem(
+            description: "A LA HORA DE DORMIR",
+            id: 2,
+            content: contentData["A3"]!.copyWith(),
+          ),
+        ]
+      ),
+      NinthDayContent(
+        title: "NIVEL MEDIO DE ANSIEDAD",
+        id: 1,
+        items: [
+          NinthDayContentItem(
+            description: "POR LA MAÑANA",
+            id: 0,
+            content: contentData["A6"]!.copyWith(),
+          ),
+          NinthDayContentItem(
+            description: "MEDIA MAÑANA",
+            id: 1,
+            content: contentData["A4"]!.copyWith(),
+          ),
+          NinthDayContentItem(
+            description: "POR LA TARDE",
+            id: 2,
+            content: contentData["V4"]!.copyWith(),
+          ),
+          NinthDayContentItem(
+            description: "A LA HORA DE DORMIR",
+            id: 3,
+            content: contentData["A3"]!.copyWith(),
+          ),
+        ]
+      ),
+      NinthDayContent(
+        title: "NIVEL DE ANSIEDAD ALTO",
+        id: 2,
+        items: [
+          NinthDayContentItem(
+            description: "MAÑANA: 8am o 9am",
+            id: 0,
+            content: contentData["A6"]!.copyWith(),
+          ),
+          NinthDayContentItem(
+            description: "MEDIA MAÑANA: 10am o 11am",
+            id: 1,
+            content: contentData["A4"]!.copyWith(),
+          ),
+          NinthDayContentItem(
+            description: "MEDIO DIA",
+            id: 2,
+            content: contentData["A7"]!.copyWith(),
+          ),
+          NinthDayContentItem(
+            description: "TARDE: 4pm o 5pm",
+            id: 3,
+            content: contentData["V4"]!.copyWith(),
+          ),
+          NinthDayContentItem(
+            description: "NOCHE: 6pm o 7pm",
+            id: 4,
+            content: contentData["V2"]!.copyWith(),
+          ),
+          NinthDayContentItem(
+            description: "A LA HORA DE DORMIR",
+            id: 5,
+            content: contentData["A3"]!.copyWith(),
+          ),
+        ]
+      ),
+    ];
+
     List<PreferenceData> prefDayInfoList = await SharedPrefFun.getPreferenceData(isDayInfo: true);
     for (int i = 0;i< prefDayInfoList.length;i++) {
       daysInfoList[i] = getDayInfoByPreferenceData(daysInfoList[i], prefDayInfoList[i]);
@@ -421,6 +508,10 @@ class DayController extends GetxController{
   }
 
   DayInfo getDayInfoByDayId(int id){
+    return daysInfoList.firstWhere((element) => element.id == id);
+  }
+
+  DayInfo getNinthDayOptionInfoById(int id){
     return daysInfoList.firstWhere((element) => element.id == id);
   }
 

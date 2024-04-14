@@ -101,56 +101,74 @@ class FirestoreServices{
   static List<Day> daysList = [
     Day(
         percent: 0,
-        title: AppLocalizations.of(appKey.currentState!.context)!.day1Title,
-        description: AppLocalizations.of(appKey.currentState!.context)!.description,
+        title: "¿POR QUÉ TIENES ANSIEDAD Y MIEDO?",
+        description: "Aprenderás a reconocer las causas que originan tu ansiedad y comprenderás por qué experimentas estos sentimientos de ansiedad y miedo.",
         number: 1
     ),
     Day(
         percent: -1,
-        title: AppLocalizations.of(appKey.currentState!.context)!.day2Title,
-        description: AppLocalizations.of(appKey.currentState!.context)!.day2Des,
+        title: "COMIDAS QUE TE CAUSAN ANSIEDAD",
+        description: '''¿Sabí­as que algunas comidas pueden provocar ansiedad sin que te des cuenta? Es importante evitarlas. 
+
+También contamos con un audio diseñado para reprogramar tu subconsciente mientras duermes. Te recomendamos escucharlo todas las noches con auriculares a un volumen bajo a la hora de dormir.''',
         number: 2
     ),
     Day(
         percent: -1,
-        title: AppLocalizations.of(appKey.currentState!.context)!.day3Title,
-        description: AppLocalizations.of(appKey.currentState!.context)!.day3Des,
+        title: "CONTROLANDO LA ANSIEDAD Y PREOCUPACIÓN",
+        description: '''Tienes a tu disposición un audio que te guí­a a gestionar los pensamientos negativos que te atormentan.
+
+Recuerda continuar escuchando el audio para reprogramar tu subconsciente mientras duermes. Está diseñado con frecuencias especiales y mensajes subliminales sumamente poderosos.''',
         number: 3
     ),
     Day(
         percent: -1,
-        title: AppLocalizations.of(appKey.currentState!.context)!.day4Title,
-        description: AppLocalizations.of(appKey.currentState!.context)!.day4Des,
+        title: "BLOQUEANDO PENSAMIENTOS NEGATIVOS",
+        description: '''Activa tu poder para detener y bloquear los pensamientos negativos con una técnica poderosa.
+
+Recuerda continuar escuchando el audio para reprogramar tu subconsciente mientras duermes. Está diseñado con frecuencias especiales y mensajes subliminales sumamente poderosos.''',
         number: 4
     ),
     Day(
         percent: -1,
-        title: AppLocalizations.of(appKey.currentState!.context)!.day5Title,
-        description: AppLocalizations.of(appKey.currentState!.context)!.day5Des,
+        title: "CONTROLANDO EMOCIONES NEGATIVAS",
+        description: '''Aplica esta poderosa técnica para que controles la ansiedad, miedo, preocupación y la desesperación en forma efectiva.
+
+Recuerda continuar escuchando el audio para reprogramar tu subconsciente mientras duermes. Está diseñado con frecuencias especiales y mensajes subliminales sumamente poderosos.''',
         number: 5
     ),
     Day(
         percent: -1,
-        title: AppLocalizations.of(appKey.currentState!.context)!.day6Title,
-        description: AppLocalizations.of(appKey.currentState!.context)!.day6Des,
+        title: "ELIMINANDO EL ESTRÉS DE TU ORGANISMO",
+        description: '''Te guiará a eliminar el estrés acumulado de tu mente y de tu cuerpo fí­sico con este vídeo.
+
+Recuerda continuar escuchando el audio para reprogramar tu subconsciente mientras duermes. Está diseñado con frecuencias especiales y mensajes subliminales sumamente poderosos.''',
         number: 6
     ),
     Day(
         percent: -1,
-        title: AppLocalizations.of(appKey.currentState!.context)!.day7Title,
-        description: AppLocalizations.of(appKey.currentState!.context)!.day7Des,
+        title: "ALCANZA EL BALANCE EMOCIONAL",
+        description: '''En este ví­deo, te guiará para lograr un equilibrio mental y emocional. Solo relájate y déjate llevar por mis indicaciones.
+
+Recuerda continuar escuchando el audio para reprogramar tu subconsciente mientras duermes. Está diseñado con frecuencias especiales y mensajes subliminales sumamente poderosos.''',
         number: 7
     ),
     Day(
         percent: -1,
-        title: AppLocalizations.of(appKey.currentState!.context)!.day8Title,
-        description: AppLocalizations.of(appKey.currentState!.context)!.day8Des,
+        title: "ACTIVA TU SEGURIDAD EMOCIONAL",
+        description: '''En este audio te guío para que actives una seguridad mental y emocional en cualquier momento y lugar.
+
+Recuerda continuar escuchando el audio para reprogramar tu subconsciente mientras duermes. Está diseñado con frecuencias especiales y mensajes subliminales sumamente poderosos.''',
         number: 8
     ),
     Day(
         percent: -1,
-        title: AppLocalizations.of(appKey.currentState!.context)!.day9Title,
-        description: AppLocalizations.of(appKey.currentState!.context)!.day9Des,
+        title: "CONTINÚA TU TRANSFORMACIÓN",
+        description: '''¡Felicitaciones por seguir con tu compromiso de vencer la ansiedad! 
+
+A partir de este dí­a, puedes elegir los ejercicios que sean más efectivos para ti y hacerlos todos los dí­as, hasta que logres el equilibrio emocional y la tranquilidad.
+
+De lo contrario, aquí­ tienes 3 opciones según el nivel de ansiedad que experimentes:''',
         number: 9,
         isIdealProgram: true
     ),
@@ -170,6 +188,7 @@ class FirestoreServices{
   static Future<Map<String,Content>> getContentData()async{
     Map<String,Content> data = {};
     final response = await contentRef.get();
+    print(response);
     if(response.docs.isNotEmpty){
       List<Content> content = [];
       for (var element in response.docs) {
@@ -191,15 +210,17 @@ class FirestoreServices{
   }
 
   static Future<List<Day>> getDayData()async{
-    List<Day> days = [];
+    /*List<Day> days = [];
     final response = await dayRef.get();
     if(response.docs.isNotEmpty){
       for (var element in response.docs) {
-        days.add(Day.fromJson(element.data()));
+        Day day = Day.fromJson(element.data());
+        days.add(day);
+        print(day.description);
       }
     }
-    days.sort((a,b)=> a.number.compareTo(b.number));
-    return days;
+    days.sort((a,b)=> a.number.compareTo(b.number));*/
+    return daysList;
   }
 }
 

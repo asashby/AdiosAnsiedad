@@ -57,6 +57,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     );
     flickManager?.flickVideoManager?.addListener(() {
       playDuration = (flickManager?.flickVideoManager?.videoPlayerValue?.position??const Duration(seconds: 0));
+      if(flickManager!.flickVideoManager!.isVideoEnded == true){
+        Navigator.maybePop(context);
+        dispose();
+      }
     });
 
     // await Future.delayed(const Duration(milliseconds: 1000),(){
