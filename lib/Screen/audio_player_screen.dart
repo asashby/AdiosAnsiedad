@@ -115,15 +115,15 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
           isLoading = true;
         });
       }*/
-      File? audioPath = await cacheManager.getSingleFile(widget.content?.path??"",key: widget.content?.id??"");
-      await player.play(DeviceFileSource(audioPath.path),mode: PlayerMode.mediaPlayer);
+      //File? audioPath = await cacheManager.getSingleFile(widget.content?.path??"",key: widget.content?.id??"");
+      await player.play(UrlSource(widget.content?.path??""),mode: PlayerMode.mediaPlayer);
       if(isLoading){
         setState(() {
           isLoading = false;
         });
       }
     }else{
-      await player.play(AssetSource(widget.content?.path??""),mode: PlayerMode.mediaPlayer);
+      await player.play(UrlSource(widget.content?.path??""),mode: PlayerMode.mediaPlayer);
     }
     // player.seek(Duration(seconds: widget.content?.watchDuration??0));
   }

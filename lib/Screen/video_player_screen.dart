@@ -43,13 +43,13 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
       setState(() {
         isLoading = true;
       });
-      File? videoPath = await cacheManager.getSingleFile(widget.content?.path??"",key: widget.content?.id??"");
-      videoPlayerController = VideoPlayerController.file(videoPath);
+      //File? videoPath = await cacheManager.getSingleFile(widget.content?.path??"",key: widget.content?.id??"");
+      videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(widget.content?.path??""));
       setState(() {
         isLoading = false;
       });
     }else{
-      videoPlayerController = VideoPlayerController.asset(widget.content?.path??"");
+      videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(widget.content?.path??""));
     }
     flickManager = FlickManager(
       videoPlayerController: videoPlayerController!,

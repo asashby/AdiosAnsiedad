@@ -14,7 +14,7 @@ class FirestoreServices{
         contentType: 1,
         path: astContentA1,
         number: 1,
-        duration: 667
+        duration: 666
     ),
     "A2" : Content(
         id: "A2",
@@ -22,15 +22,15 @@ class FirestoreServices{
         contentType: 1,
         path: astContentA2,
         number: 2,
-        duration: 755
+        duration: 754
     ),
     "V1" : Content(
         id: "V1",
-        title: "COMIDAS QUE CAUSAN ANSIEDA",
+        title: "COMIDAS QUE CAUSAN ANSIEDAD",
         contentType: 2,
         path: astContentV1,
         number: 1,
-        duration: 652
+        duration: 651
     ),
     "A3" : Content(
         id: "A3",
@@ -54,7 +54,7 @@ class FirestoreServices{
         contentType: 2,
         path: astContentV2,
         number: 2,
-        duration: 1263
+        duration: 1237
     ),
     "A5" : Content(
         id: "A5",
@@ -62,7 +62,7 @@ class FirestoreServices{
         contentType: 1,
         path: astContentA5,
         number: 5,
-        duration: 660
+        duration: 894
     ),
     "V3" : Content(
         id: "V3",
@@ -70,7 +70,7 @@ class FirestoreServices{
         contentType: 2,
         path: astContentV3,
         number: 3,
-        duration: 503
+        duration: 488
     ),
     "V4" : Content(
         id: "V4",
@@ -78,7 +78,7 @@ class FirestoreServices{
         contentType: 2,
         path: astContentV4,
         number: 4,
-        duration: 916
+        duration: 902
     ),
     "A6" : Content(
         id: "A6",
@@ -94,7 +94,7 @@ class FirestoreServices{
         contentType: 1,
         path: astContentA7,
         number: 7,
-        duration: 1599
+        duration: 1598
     ),
   };
 
@@ -186,9 +186,8 @@ De lo contrario, aquí­ tienes 3 opciones según el nivel de ansiedad que exper
   }
 
   static Future<Map<String,Content>> getContentData()async{
-    Map<String,Content> data = {};
+    /*Map<String,Content> data = {};
     final response = await contentRef.get();
-    print(response);
     if(response.docs.isNotEmpty){
       List<Content> content = [];
       for (var element in response.docs) {
@@ -200,7 +199,8 @@ De lo contrario, aquí­ tienes 3 opciones según el nivel de ansiedad que exper
         });
       }
     }
-    return data;
+    return data;*/
+    return contentData;
   }
 
   static Future<void> setDayData()async{
