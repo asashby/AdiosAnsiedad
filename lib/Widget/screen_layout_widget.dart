@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:quantum/Utils/custom_text_style.dart';
 import 'package:quantum/Utils/size_utils.dart';
 import 'package:quantum/Widget/empty_app_bar_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../Const/primary_theme.dart';
 
@@ -32,6 +33,17 @@ class ScreenLayoutWidget extends StatelessWidget {
         shadowColor: PrimaryTheme.bgColor,
         elevation: 0,
         titleTextStyle: CustomTextStyle.primary17_700,
+        actions: <Widget>[
+          TextButton( 
+            child: const Text(
+              "CONSULTAS",
+              style: TextStyle(color: PrimaryTheme.primaryColor),
+            ),
+            onPressed: () {
+              launchUrl(emailLaunchUri);
+            },
+          )
+        ],
         systemOverlayStyle: const SystemUiOverlayStyle(
             systemNavigationBarColor: PrimaryTheme.bgColor,
             statusBarColor: PrimaryTheme.bgColor,
@@ -53,3 +65,19 @@ class ScreenLayoutWidget extends StatelessWidget {
     );
   }
 }
+
+
+String? encodeQueryParameters(Map<String, String> params) {
+return params.entries
+  .map((MapEntry<String, String> e) =>
+      '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+  .join('&');
+}
+
+final Uri emailLaunchUri = Uri(
+  scheme: 'mailto',
+  path: 'siabinter@gmail.com',
+  query: encodeQueryParameters(<String, String>{
+    'subject': 'Consulta sobre Adios Ansiedad app',
+  }),
+);
